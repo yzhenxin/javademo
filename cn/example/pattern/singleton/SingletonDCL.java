@@ -1,4 +1,4 @@
-package singleton;
+package cn.example.pattern.singleton;
 
 public class SingletonDCL {
 	private volatile static SingletonDCL instance;

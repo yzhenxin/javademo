@@ -1,4 +1,4 @@
-package singleton;
+package cn.example.pattern.singleton;
 
 public class SingletonHungry {
 	private static SingletonHungry instance = new SingletonHungry();

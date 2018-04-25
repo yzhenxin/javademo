@@ -1,4 +1,4 @@
-package singleton;
+package cn.example.pattern.singleton;
 
 public class SingletonLazySyn {
 	private static SingletonLazySyn instance;

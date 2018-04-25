@@ -1,4 +1,4 @@
-package singleton;
+package cn.example.pattern.singleton;
 
 public class SingleObject {
 	private static SingleObject instance = new SingleObject();
