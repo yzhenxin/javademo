@@ -1,5 +1,6 @@
 package cn.example.excel;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,6 +12,8 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.openxml4j.opc.PackageAccess;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -39,16 +42,29 @@ public class ExcelDemo {
 			SimpleDateFormat sdf = new SimpleDateFormat("HH-mm-ss");
 			String name = sdf.format(new Date());
 			System.out.println(name);
-			
-			int rows = 100;
-			
-			exportExcelHSSF(rows, name); // 65535 max
-			generateExcel(rows, name);
-			offAutoFlushing(rows, name);
-			importExcel("D:/16-46-22-cfsxxs.xlsx");
+			File file = new File("D:/13-59-22-fsxxs.xlsx");
+			System.out.println(file.getPath());
+			System.out.println(file.getAbsolutePath());
+//			int rows = 60;
+//			importExcel1(file);
+//			exportExcelHSSF(rows, name); // 65535 max
+//			generateExcel(rows, name);
+//			offAutoFlushing(rows, name);
+//			importExcel("D:/16-46-22-cfsxxs.xlsx");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void importExcel1(File file) throws Exception {
+		OPCPackage opcPackage = OPCPackage.open(file, PackageAccess.READ);
+		XSSFWorkbook workbook = new XSSFWorkbook(opcPackage);
+		
+		int sheets = workbook.getNumberOfSheets();
+		System.out.println(sheets);
+		
+		XSSFSheet sheetAt = workbook.getSheetAt(sheets);
+		
 	}
 	
 	public static void importExcel(String fileName) throws IOException {
